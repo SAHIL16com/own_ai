@@ -8,7 +8,7 @@ const Sidebar = () => {
   return (
     <div className={`sidebar ${extended ? "expanded" : "collapsed"}`}>
       <div className="top">
-        <Menu className="menu"onClick={() => setExtended(!extended)}/>
+        <Menu className="menu" onClick={() => setExtended(!extended)} />
 
         <div className="new-chat">
           <Plus />
