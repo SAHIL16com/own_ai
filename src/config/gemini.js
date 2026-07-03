@@ -9,8 +9,7 @@ const ai = new GoogleGenAI({
 async function MainChat(prompt) {
   try {
 
-    const response = await ai.models.generateContent({model: "gemini-2.5-flash",contents: prompt, });
-
+    const response = await ai.models.generateContent({model: "gemini-2.5-flash",contents: prompt, }); 
     return response.text;
     
   } catch (error) {

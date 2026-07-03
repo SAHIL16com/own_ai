@@ -1,25 +1,43 @@
-import { useEffect } from "react";
+import { FormInputIcon } from "lucide-react";
 import MainChat from "../config/gemini";
-import {createContext} from "react";
+import { createContext } from "react";
 export const Context = createContext();
+import { useState } from "react";
 
 const ContextProvider = ({ children }) => {
 
+  const [input, setInput] = useState("");
+  const [recentPrompts, setRecentPrompts] = useState([]);
+  const [prevPrompts, setPrevPrompts] = useState([]);
+  const [showResult, setShowResult] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [resultData, setResultData] = useState("");
+
   const onSent = async (prompt) => {
-    try {
-      const response = await MainChat(prompt);
-      console.log(response);
-    } catch (error) {
-      console.error("Gemini Error:", error);
-    }
+
+    setResultData('')
+    setLoading(true)
+    setShowResult(true)
+    const response = await MainChat(input)
+    console.log(response)
+    setResultData(response)
+    setLoading(false)
+    setInput("") 
   };
 
-  useEffect(() => {
-    onSent("What is React JS?");
-  }, []);
+
 
   const ContextValue = {
     onSent,
+    prevPrompts,
+    setPrevPrompts,
+    setRecentPrompts,
+    recentPrompts,
+    showResult,
+    loading,
+    resultData,
+    input,
+    setInput,
   };
 
   return (
