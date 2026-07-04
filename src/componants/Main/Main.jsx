@@ -57,19 +57,20 @@ const Main = () => {
                             <User />
                             <p>{recentPrompts}</p>
                         </div>
-                        <div>
+                        <div className="result_data">
                             <img src="gemini.png" alt="" />
-                            <p dangerouslySetInnerHTML={{ __html: resultData }} />
+                            {loading ? <div className="loader">
+                                <hr />
+                                <hr />
+                                <hr />
+
+                            </div> :
+                             <p dangerouslySetInnerHTML={{ __html: resultData }} />
+                             }
+                            
                         </div>
-
-
-
                     </div>
                 }
-
-
-
-
                 <div className="main_bottom">
                     <div className="searchbox">
                         <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here...' />

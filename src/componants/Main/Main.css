@@ -1,214 +1,246 @@
-.main {
-    flex: 1;
-    min-height: 100vh;
-    background: #212121;
-    color: #fff;
-    display: flex;
-    flex-direction: column;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
+.main {
+  flex: 1;
+  min-height: 100vh;
+  background: #f7f8fc;
+  display: flex;
+  flex-direction: column;
+}
+
+
 .nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 35px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .nav p {
-    font-size: 24px;
-    font-weight: 600;
-    color: #e8eaed;
+  font-size: 24px;
+  font-weight: 600;
+  color: #4a6cf7;
 }
 
 .nav svg {
-    width: 38px;
-    height: 38px;
-    padding: 8px;
-    border-radius: 50%;
-    background: #303134;
-    cursor: pointer;
+  background: #eef2ff;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #4a6cf7;
 }
+
 
 .main_container {
-    width: 100%;
-    max-width: 950px;
-    margin: auto;
-    padding: 0 25px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex: 1;
+  width: 90%;
+  max-width: 900px;
+  margin: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
+
 
 .greet {
-    margin-top: 40px;
-}
-
-.greet p {
-    font-size: 56px;
-    font-weight: 600;
-    line-height: 1.2;
+  margin-top: 60px;
 }
 
 .greet p span {
-    background: linear-gradient(
-        90deg,
-        #4285F4,
-        #8E6CF8,
-        #D96570,
-        #FBBC05
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+  font-size: 42px;
+  font-weight: 600;
+  color: #4a6cf7;
 }
 
-.greet > span {
-    display: block;
-    margin-top: 10px;
-    font-size: 38px;
-    color: #9aa0a6;
-    font-weight: 500;
+.greet span {
+  font-size: 22px;
+  color: #666;
 }
+
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
-    margin-top: 50px;
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
 }
 
 .card {
-    background: #2d2d2d;
-    border-radius: 18px;
-    padding: 18px;
-    height: 190px;
-    cursor: pointer;
-    transition: .25s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
 }
 
 .card:hover {
-    background: #383838;
-    transform: translateY(-4px);
+  transform: translateY(-5px);
 }
 
 .card p {
-    font-size: 17px;
-    line-height: 1.5;
-    color: #ececec;
+  color: #444;
+  line-height: 1.5;
 }
 
 .card svg {
-    align-self: flex-end;
-    width: 42px;
-    height: 42px;
-    padding: 10px;
-    border-radius: 50%;
-    background: #3c4043;
-    color: #8ab4f8;
+  align-self: flex-end;
+  color: #4a6cf7;
 }
 
-/* Bottom */
+
+.result {
+  margin-top: 30px;
+  overflow-y: auto;
+}
+
+.result_title {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.result_title svg {
+  background: #eef2ff;
+  padding: 8px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #4a6cf7;
+}
+
+.result_data {
+  display: flex;
+  gap: 20px;
+}
+
+.result_data img {
+  width: 40px;
+  height: 40px;
+}
+
+.result_data p {
+  color: #444;
+  line-height: 1.8;
+}
+
+.loader {
+  width: 100%;
+}
+
+.loader hr {
+  border: none;
+  height: 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(90deg, #dbe4ff, #f3f6ff, #dbe4ff);
+  background-size: 300%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: -100%;
+  }
+}
+
 
 .main_bottom {
-    width: 100%;
-    margin-top: auto;
-    padding: 35px 0 25px;
+  margin: 30px 0;
 }
-
 .searchbox {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #2d2d2d;
-    border-radius: 30px;
-    padding: 12px 20px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
-
 .searchbox input {
-    flex: 1;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: white;
-    font-size: 16px;
-}
-
-.searchbox input::placeholder {
-    color: #9aa0a6;
+  border: none;
+  outline: none;
+  flex: 1;
+  background: transparent;
+  font-size: 16px;
+  color: #333;
 }
 
 .searchbox div {
-    display: flex;
-    align-items: center;
-    gap: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 
 .searchbox svg {
-    width: 22px;
-    height: 22px;
-    color: #bdbdbd;
-    cursor: pointer;
-    transition: .2s;
+  cursor: pointer;
+  color: #666;
+  transition: 0.3s;
 }
 
 .searchbox svg:hover {
-    color: white;
+  color: #4a6cf7;
 }
 
 .main_bottom p {
-    text-align: center;
-    margin-top: 14px;
-    color: #9aa0a6;
-    font-size: 13px;
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #777;
 }
 
-/* Responsive */
-
-@media (max-width: 900px) {
-
-    .cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .greet p {
-        font-size: 42px;
-    }
-
-    .greet > span {
-        font-size: 30px;
-    }
+.result_data {
+    display: flex;
+    gap: 20px;
+    max-height: 450px;
+    overflow-y: auto;
+    padding-right: 10px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .nav {
+    padding: 15px 20px;
+  }
 
-    .cards {
-        grid-template-columns: 1fr;
-    }
+  .greet p span {
+    font-size: 32px;
+  }
 
-    .nav {
-        padding: 18px;
-    }
+  .greet span {
+    font-size: 18px;
+  }
 
-    .greet p {
-        font-size: 32px;
-    }
+  .cards {
+    grid-template-columns: 1fr;
+  }
 
-    .greet > span {
-        font-size: 22px;
-    }
+  .searchbox {
+    padding: 10px 15px;
+  }
 
-    .card {
-        height: 160px;
-    }
+  .searchbox input {
+    font-size: 14px;
+  }
 
-    .searchbox {
-        padding: 10px 16px;
-    }
-
-    .searchbox div {
-        gap: 12px;
-    }
+  .searchbox div {
+    gap: 10px;
+  }
 }
