@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
-import {Menu,Plus,MessageSquare,CircleQuestionMark,History,Settings,} from "lucide-react";
-
+import { Menu, Plus, MessageSquare, CircleQuestionMark, History, Settings, } from "lucide-react";
+import { useContext } from "react";
+import { Context } from "../../Context/Context.jsx";
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
+  const { onSent, prevPrompts, setRecentPrompts } = useContext(Context);
 
   return (
     <div className={`sidebar ${extended ? "expanded" : "collapsed"}`}>
@@ -18,16 +20,14 @@ const Sidebar = () => {
         {extended && (
           <div className="recent">
             <p className="recent_title">Recent</p>
-
-            <div className="recent_entry">
-              <MessageSquare size={18} />
-              <p>What is React?</p>
-            </div>
-
-            <div className="recent_entry">
-              <MessageSquare size={18} />
-              <p>Explain JavaScript</p>
-            </div>
+            {prevPrompts.map((item, index) => {
+              return (
+                <div className="recent_entry">
+                  <MessageSquare size={18} />
+                  <p>{item.slice(0, 20)}..</p>
+                </div>
+              )
+            })}
           </div>
         )}
       </div>

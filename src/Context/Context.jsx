@@ -28,8 +28,9 @@ const ContextProvider = ({ children }) => {
     setShowResult(true)
     setRecentPrompts(input)
     const response = await MainChat(input)
+    setPrevPrompts(prev => [...prev, input])
     let responseArray = response.split("**");
-    let newResponse ;
+    let newResponse = " ";
     for (let i = 0 ; i < responseArray.length  ; i++ )
     {
       if( i === 0 || i % 2 !== 1  ){
@@ -46,8 +47,6 @@ const ContextProvider = ({ children }) => {
       const nextWord = newResponseArray[i] ;
       delayPara(i , nextWord+" ") 
     }
-
-    
     setLoading(false)
     setInput("") 
   };
