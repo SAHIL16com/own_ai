@@ -5,14 +5,18 @@ import { useContext } from "react";
 import { Context } from "../../Context/Context.jsx";
 const Sidebar = () => {
   const [extended, setExtended] = useState(false);
-  const { onSent, prevPrompts, setRecentPrompts } = useContext(Context);
+  const { onSent, prevPrompts, setRecentPrompts , newChat } = useContext(Context);
+  const loadPrompt = async (prompt) =>{
+    setRecentPrompts(prompt)
+    await onSent(prompt)
+  }
 
   return (
     <div className={`sidebar ${extended ? "expanded" : "collapsed"}`}>
       <div className="top">
         <Menu className="menu" onClick={() => setExtended(!extended)} />
 
-        <div className="new-chat">
+        <div onClick={() =>newChat()} className="new-chat">
           <Plus />
           {extended && <p>New Chat</p>}
         </div>
@@ -22,9 +26,9 @@ const Sidebar = () => {
             <p className="recent_title">Recent</p>
             {prevPrompts.map((item, index) => {
               return (
-                <div className="recent_entry">
+                <div onClick={() => loadPrompt(item)} className="recent_entry">
                   <MessageSquare size={18} />
-                  <p>{item.slice(0, 20)}..</p>
+                  <p>{item.slice(0, 20)}..</p>                             
                 </div>
               )
             })}

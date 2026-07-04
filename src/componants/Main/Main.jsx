@@ -6,8 +6,6 @@ import {
     Lightbulb,
     MessageSquare,
     CodeXml,
-    Images,
-    Mic,
     Send,
 } from "lucide-react";
 import { useContext } from 'react';
@@ -75,9 +73,8 @@ const Main = () => {
                     <div className="searchbox">
                         <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here...' />
                         <div>
-                            <Images />
-                            <Mic />
-                            <Send onClick={() => onSent()} />
+                            {input ? <Send onClick={onSent} /> : null}
+                            
                         </div>
                     </div>
                     <p>This may display inaccurate information please double check.</p>
