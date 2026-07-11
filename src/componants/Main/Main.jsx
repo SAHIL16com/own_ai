@@ -7,11 +7,12 @@ import {
     MessageSquare,
     CodeXml,
     Send,
+    Square,
 } from "lucide-react";
 import { useContext } from 'react';
 import { Context } from '../../Context/Context.jsx';
 const Main = () => {
-    const { onSent, recentPrompts, showResult, loading, resultData, input, setInput } = useContext(Context);
+    const { onSent, recentPrompts, showResult, loading, resultData, input, setInput, isStreaming, stop } = useContext(Context);
 
     return (
         <div className="main">
@@ -71,10 +72,23 @@ const Main = () => {
                 }
                 <div className="main_bottom">
                     <div className="searchbox">
-                        <input onChange={(e) => setInput(e.target.value)} value={input} type="text" placeholder='Enter your prompt here...' />
+                        <input 
+                            onChange={(e) => setInput(e.target.value)} 
+                            value={input} 
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter" && !isStreaming) {
+                                    onSent();
+                                }
+                            }}
+                            type="text" 
+                            placeholder='Enter your prompt here...' 
+                        />
                         <div>
-                            {input ? <Send onClick={onSent} /> : null}
-                            
+                            {isStreaming ? (
+                                <Square onClick={stop} className="stop-icon" />
+                            ) : (
+                                input ? <Send onClick={onSent} /> : null
+                            )}
                         </div>
                     </div>
                     <p>This may display inaccurate information please double check.</p>
